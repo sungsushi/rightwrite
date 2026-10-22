@@ -25,6 +25,7 @@ define(function(require) {
                 xRel: 0
             };
             this.editorModel.scrollInfo = null;
+            this.editorModel.highlightLine = line;
 
             this.themeController.selectSectionByName('editor');
         }

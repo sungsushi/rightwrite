@@ -38,11 +38,19 @@ define(function(require) {
                 if (this.editorModel.scrollInfo) {
                     this.view.scrollTo(this.editorModel.scrollInfo.left, this.editorModel.scrollInfo.top);
                 }
+                else if (this.editorModel.highlightLine !== null) {
+                    this.view.scrollToLine(this.editorModel.highlightLine);
+                }
                 else if (this.editorModel.cursorPosition) {
                     var scrollTo = this.view.getScrollInfo();
                     if (scrollTo.top > 0) {
                         this.view.scrollTo(0, scrollTo.top + scrollTo.clientHeight - this.view.getDefaultTextHeight() * 2);
                     }
+                }
+
+                if (this.editorModel.highlightLine !== null) {
+                    this.view.flashLine(this.editorModel.highlightLine);
+                    this.editorModel.highlightLine = null;
                 }
 
             }.bind(this), 300);

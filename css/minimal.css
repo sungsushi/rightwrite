@@ -336,6 +336,16 @@ body {
     background: #fafafa;
 }
 
+.mn-pane-editor .CodeMirror-activeline-background.mn-flash-line,
+.mn-pane-editor .mn-flash-line {
+    animation: mn-flash-line 1.5s ease-out forwards;
+}
+
+@keyframes mn-flash-line {
+    0%, 30% { background: #fff1a8; }
+    100% { background: transparent; }
+}
+
 .mn-pane-editor .CodeMirror-cursor {
     border-left: 2px solid var(--mn-accent);
 }
@@ -371,6 +381,35 @@ body {
     font-family: var(--mn-script-font);
     color: #000000;
     overflow: hidden;
+}
+
+.live-preview-page-anchor {
+    position: sticky;
+    top: 0;
+    height: 0;
+    z-index: 2;
+}
+
+.live-preview-page-indicator {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: rgba(26, 26, 26, 0.78);
+    color: #ffffff;
+    font-family: var(--mn-ui-font);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.live-preview-page-indicator.is-visible {
+    opacity: 1;
+    transition-duration: 0.1s;
 }
 
 .sp-line {

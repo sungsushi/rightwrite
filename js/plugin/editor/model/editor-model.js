@@ -6,7 +6,12 @@ define(function(require) {
 
         cursorPosition: null,
 
-        scrollInfo: null
+        scrollInfo: null,
+
+        /**
+         * Line to briefly highlight next time the editor is activated (set by "go to line")
+         */
+        highlightLine: null
 
     });
 

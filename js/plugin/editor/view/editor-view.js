@@ -7,6 +7,8 @@ define(function(require) {
         BaseComponent = require('core/view/base-component'),
         SectionViewMixin = require('core/view/section-view-mixin');
 
+    var FLASH_DURATION = 1500; // ms, keep in sync with the mn-flash-line animation
+
     require('libs/codemirror/addon/selection/active-line');
     require('libs/codemirror/addon/hint/show-hint');
     require('libs/codemirror/addon/hint/anyword-hint');
@@ -71,6 +73,37 @@ define(function(require) {
             this.editor.setCursor(position);
         },
         
+        /**
+         * Scroll so the given line sits in the upper third of the editor
+         * @param {number} line
+         */
+        scrollToLine: function(line) {
+            var top = this.editor.charCoords({line: line, ch: 0}, 'local').top;
+            this.editor.scrollTo(null, top - this.editor.getScrollInfo().clientHeight / 3);
+        },
+
+        /**
+         * Briefly highlight a line (e.g. after jumping to it from the preview)
+         * @param {number} line
+         */
+        flashLine: function(line) {
+            var editor = this.editor,
+                handle = editor.getLineHandle(line);
+            if (!handle) {
+                return;
+            }
+            clearTimeout(this._flashTimer);
+            if (this._flashHandle) {
+                editor.removeLineClass(this._flashHandle, 'background', 'mn-flash-line');
+            }
+            editor.addLineClass(handle, 'background', 'mn-flash-line');
+            this._flashHandle = handle;
+            this._flashTimer = setTimeout(function() {
+                editor.removeLineClass(handle, 'background', 'mn-flash-line');
+                this._flashHandle = null;
+            }.bind(this), FLASH_DURATION);
+        },
+
         scrollTo: function(left, top) {
             this.editor.scrollTo(left, top);
         },
