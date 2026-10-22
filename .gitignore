@@ -12,6 +12,7 @@ js/rightwrite-bootstrap.js
 REMOVED-FEATURES.md
 
 # editors / OS
+.claude/
 .idea/
 .vscode/
 .DS_Store
