@@ -1,0 +1,47 @@
+{
+  "name": "rightwrite",
+  "version": "0.1.0",
+  "description": "A minimal, browser-based screenplay editor for Fountain with a live, print-accurate preview and PDF export.",
+  "keywords": [
+    "screenwriting",
+    "screenplay",
+    "fountain",
+    "editor",
+    "pdf"
+  ],
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "grunt samples && node server.js",
+    "start": "node server.js",
+    "build": "grunt build",
+    "lint": "eslint -c .eslintrc.json js",
+    "test": "node --test \"test/**/*.test.js\""
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "aw-parser": "0.1.1",
+    "d3": "^3.4.1",
+    "handlebars": "^4.7.7",
+    "pdfkit": "^0.12.2",
+    "protoplast": "2.0.3",
+    "requirejs-text": "^2.0.15"
+  },
+  "devDependencies": {
+    "eslint": "^4.18.2",
+    "express": "^4.14.0",
+    "grunt": "^1.4.1",
+    "grunt-cli": "~1.2.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-compress": "^1.4.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^2.0.0",
+    "grunt-contrib-handlebars": "^1.0.0",
+    "grunt-contrib-requirejs": "^1.0.0",
+    "grunt-contrib-uglify": "^5.2.2",
+    "requirejs": "^2.3.6"
+  }
+}

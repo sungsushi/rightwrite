@@ -1,0 +1,17 @@
+# dependencies
+node_modules/
+.npm-cache/
+
+# build output (npm run build)
+dist/
+rightwrite.zip
+samples/compiled.js
+js/rightwrite-bootstrap.js
+
+# local notes
+REMOVED-FEATURES.md
+
+# editors / OS
+.idea/
+.vscode/
+.DS_Store
