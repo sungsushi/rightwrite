@@ -657,6 +657,10 @@ body {
     line-height: 1.6;
 }
 
+.about-byline {
+    color: var(--mn-muted);
+}
+
 .mn-tooltip {
     position: fixed;
     z-index: 100;
