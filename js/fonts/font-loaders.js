@@ -10,15 +10,20 @@ define(function(require) {
         {name: "CourierPrimeCyrillic", label: "Courier Prime Cyrillic", file: "courier-prime-cyrillic"}
     ];
 
-    // the built app ships fonts in bundle/js/fonts, the development page (dev.html) loads them from js/fonts
-    var isBundle = !!document.querySelector('script[src*="bundle/js/"]'),
+    // Where font files come from:
+    //  - single-file build (rightwrite.html): embedded in the page as named modules "fonts/<file>"
+    //  - built site (dist/index.html): bundle/js/fonts/<file>.js
+    //  - development page (dev.html): js/fonts/<file>.js
+    var isStandalone = !!window.RIGHTWRITE_STANDALONE,
+        isBundle = !!document.querySelector('script[src*="bundle/js/"]'),
         basePath = isBundle ? 'bundle/js/fonts/' : 'js/fonts/';
 
     var loaders = {};
     config.forEach(function(font) {
         if (font.file) {
             loaders[font.name] = function(callback) {
-                require([basePath + font.file + '.js?callback=define'], function(fonts) {
+                var moduleId = isStandalone ? 'fonts/' + font.file : basePath + font.file + '.js?callback=define';
+                require([moduleId], function(fonts) {
                     callback(fonts);
                 });
             };

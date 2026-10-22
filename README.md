@@ -3,6 +3,16 @@
 A minimal screenplay editor that runs in your browser. Write in [Fountain](https://fountain.io) on the left,
 see the formatted script on the right, and export a PDF when you're ready.
 
+### ▶ [Open rightwrite in your browser](https://sungsushi.github.io/rightwrite/)
+
+### ⬇ [Download rightwrite.html](https://github.com/sungsushi/rightwrite/releases/latest/download/rightwrite.html) — works offline
+
+The download is a single HTML file with everything built in. Save it anywhere and double-click it to open
+rightwrite in your browser, no internet connection or installation needed.
+Older versions are on the [releases page](https://github.com/sungsushi/rightwrite/releases).
+
+---
+
 - **Live preview, not a PDF viewer.** The script is rendered as HTML pages with the same pagination,
   positions and page breaks as the exported PDF. It updates 3 seconds after you stop typing.
 - **Print-accurate.** A4 or US Letter, title page, dual dialogue, scene numbers, `(MORE)`/`(CONT'D)`,
@@ -33,12 +43,25 @@ changes show up on reload without a build.
 npm run build
 ```
 
-This creates:
+This creates `dist/`:
 
-- `dist/` — the complete site (`index.html` + `bundle/`), ready to host on any static web server
-- `rightwrite.zip` — the same files for offline use: unzip and open `index.html`
+- `index.html` + `bundle/` — the site, ready to host on any static web server
+- `rightwrite.html` — the single-file version (app, styles and fonts inlined, about 4 MB) for offline use
 
 `npm start` serves the repository, with the built site at <http://localhost:8000/dist/>.
+
+### Publishing
+
+- **Website:** every push to `main` builds the site and deploys it to GitHub Pages
+  (`.github/workflows/pages.yml`). In the repository settings, set *Pages → Build and deployment → Source* to
+  *GitHub Actions*.
+- **Download:** pushing a version tag creates a GitHub release with `rightwrite.html` attached
+  (`.github/workflows/release.yml`):
+
+  ```bash
+  git tag v0.1.0
+  git push origin v0.1.0
+  ```
 
 ### Test
 

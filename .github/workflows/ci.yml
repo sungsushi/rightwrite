@@ -1,8 +1,7 @@
 name: CI
 
+# runs on pull requests; pushes to main are tested by the Pages workflow
 on:
-  push:
-    branches: [main]
   pull_request:
 
 permissions:

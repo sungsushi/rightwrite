@@ -4,7 +4,6 @@ node_modules/
 
 # build output (npm run build)
 dist/
-rightwrite.zip
 samples/compiled.js
 js/rightwrite-bootstrap.js
 
